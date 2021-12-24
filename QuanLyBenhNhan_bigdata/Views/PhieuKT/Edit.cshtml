@@ -1,0 +1,144 @@
+﻿@model QuanLyBenhNhan_bigdata.Models.PhieuKT
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Sửa chữa thông tin phiếu kiểm tra sức khỏe</h1>
+
+
+<hr />
+<div class="row">
+    <form asp-action="Edit" class="col-md-8">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Age" class="control-label"></label>
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Sex" class="control-label"></label>
+                        <select asp-for="Sex" class="form-control">
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                        <span asp-validation-for="Sex" class="text-danger"></span>
+                    </div>
+                </div>
+                <input type="hidden" name="_id" value="@Model._id" />
+                <input type="hidden" name="MaBN" value="@ViewBag.MaBN" />
+                <div class="form-group">
+                    <label asp-for="Cp" class="control-label"></label>
+                    <select asp-for="Cp" class="form-control">
+                        <option value="1">Đau thắt ngực thường gặp</option>
+                        <option value="2">Đau thắt ngực không thường gặp</option>
+                        <option value="3">Không đau thắt ngực</option>
+                        <option value="4">Không có triệu chứng</option>
+                    </select>
+                    <span asp-validation-for="Cp" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TrestBps" class="control-label"></label>
+                    <input asp-for="TrestBps" class="form-control" />
+                    <span asp-validation-for="TrestBps" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Chol" class="control-label"></label>
+                    <input asp-for="Chol" class="form-control" />
+                    <span asp-validation-for="Chol" class="text-danger"></span>
+                </div>
+
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label asp-for="Fbs" class="control-label"></label>
+                    <input asp-for="Fbs" class="form-control" />
+                    <span asp-validation-for="Fbs" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RestEcg" class="control-label"></label>
+                    <select asp-for="RestEcg" class="form-control">
+                        <option value="0">Bình thường</option>
+                        <option value="1">có bất thường sóng ST-T (đảo ngược sóng T và / hoặc ST chênh lên hoặc xuống> 0,05 mV)</option>
+                        <option value="2">Phì đại thất trái có thể xảy ra </option>
+                    </select>
+                    <span asp-validation-for="RestEcg" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Thal" class="control-label"></label>
+                    <select asp-for="Thal" class="form-control">
+                        <option value="3">Bình thường</option>
+                        <option value="6">Nặng</option>
+                        <option value="7">Nhẹ</option>
+                    </select>
+                    <span asp-validation-for="Thal" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Exang" class="control-label"></label>
+                    <select asp-for="Exang" class="form-control">
+                        <option value="1">Có</option>
+                        <option value="0">Không</option>
+                    </select>
+                    <span asp-validation-for="Exang" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label asp-for="OldPeak" class="control-label"></label>
+                    <input asp-for="OldPeak" class="form-control" />
+                    <span asp-validation-for="OldPeak" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Slope" class="control-label"></label>
+                    <select asp-for="Slope" class="form-control">
+                        <option value="1">Tăng lên</option>
+                        <option value="2">Bằng phẳng</option>
+                        <option value="3">Dốc xuống</option>
+                    </select>
+                    <span asp-validation-for="Slope" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Ca" class="control-label"></label>
+                    <input asp-for="Ca" class="form-control" />
+                    <span asp-validation-for="Ca" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Thalac" class="control-label"></label>
+                    <input asp-for="Thalac" class="form-control" />
+                    <span asp-validation-for="Thalac" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateTime" class="control-label"></label>
+                    <input asp-for="DateTime" class="form-control" />
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Lưu" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+    @if (ViewBag.HeartPrediction != null)
+    {
+        <div class="col-md-4">
+            <h4>Dự đoán: @ViewBag.HeartPrediction.Prediction</h4>
+            <h4>Tỉ lệ mắc: @ViewBag.HeartPrediction.Probability</h4>
+
+        </div>
+    }
+</div>
+
+<div>
+    <a asp-action="GetAllPhieuKTTheoBN" asp-route-MaBN="@ViewBag.MaBN">Quay lại danh sách phiếu kiểm tra</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

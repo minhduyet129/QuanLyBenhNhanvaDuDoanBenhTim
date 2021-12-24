@@ -1,0 +1,83 @@
+﻿@model IEnumerable<QuanLyBenhNhan_bigdata.Models.BenhNhan>
+
+@{
+    ViewData["Title"] = "Index";
+    int i = 1;
+}
+
+<h1>Danh sách bệnh nhân</h1>
+<h4>Tìm kiếm theo tên, mã bệnh nhân và số điện thoại</h4>
+<form asp-action="Index" method="post">
+    <input type="text" name="keyword" />
+    <button type="submit">Tìm kiếm</button>
+</form>
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QueQuan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GioiTinh)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @(i++)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueQuan)
+            </td>
+            @if (item.GioiTinh == 1)
+            {
+                <td>
+                    Nam
+                </td>
+            }
+            else
+            {
+                <td>
+                    Nữ
+                </td>
+            }
+
+
+            <td>
+                @Html.ActionLink("Cập nhật", "Edit", new { _id = item._id }) |
+                @Html.ActionLink("Danh sách khám", "GetAllPhieuKTTheoBN", "PhieuKT", new { MaBN = item.MaBN }) |
+                @Html.ActionLink("Xóa", "Delete", new { _id = item._id })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

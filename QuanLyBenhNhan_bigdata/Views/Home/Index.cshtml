@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+   
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div id="piechart" style="width: 450px; height: 250px;"></div>
+
+    <div id="chart_div" style="width: 100%; height: 500px;"></div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Số lượng nam'],
+          ['Nam',     @ViewBag.Nam],
+          ['Nữ',      @ViewBag.Nu],
+
+        ]);
+
+        var options = {
+          title: 'Tỉ lệ bệnh nhân nam và nữ'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+        }
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart1);
+
+        function drawChart1() {
+            var data = google.visualization.arrayToDataTable([
+                ['Năm', 'Số lượng'],
+                ['2018', @ViewBag.Data1],
+                ['2019', @ViewBag.Data2],
+                ['2020', @ViewBag.Data3],
+                ['2021', @ViewBag.Data4]
+
+            ]);
+
+            var options = {
+                title: 'Số lượng bệnh nhân mới',
+                hAxis: { title: 'Năm', titleTextStyle: { color: '#333' } },
+                vAxis: { minValue: 0 }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+}

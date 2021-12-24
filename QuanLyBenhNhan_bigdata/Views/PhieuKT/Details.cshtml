@@ -1,0 +1,206 @@
+﻿@model QuanLyBenhNhan_bigdata.Models.PhieuKT
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết phiếu kiểm tra sức khỏe</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.MaBN)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.MaBN)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.MaPhieu)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.MaPhieu)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        @if (Model.Sex == 1)
+        {
+            <dd class="col-sm-8">
+                Nam
+            </dd>
+        }else{
+        <dd class="col-sm-8">
+            Nữ
+        </dd>
+        }
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Cp)
+        </dt>
+        @if (Model.Cp == 1)
+        {
+            <dd class="col-sm-8">
+                Đau thắt ngực thường gặp
+            </dd>
+        }else if(Model.Cp == 2){
+        <dd class="col-sm-8">
+            Đau thắt ngực không thường gặp
+        </dd>
+        }
+        else if(Model.Cp == 3){
+        <dd class="col-sm-8">
+            Không đau thắt ngực
+        </dd>
+        }else{
+        <dd class="col-sm-8">
+            Không có triệu chứng
+        </dd>
+        }
+
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TrestBps)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TrestBps)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Chol)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Chol)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Fbs)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Fbs)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.RestEcg)
+        </dt>
+        @if (Model.RestEcg == 0)
+        {
+            <dd class="col-sm-8">
+                Bình thường
+            </dd>
+        }else if(Model.Cp == 1){
+        <dd class="col-sm-8">
+            Có bất thường sóng ST-T (đảo ngược sóng T và / hoặc ST chênh lên hoặc xuống> 0,05 mV)
+        </dd>
+
+        }else{
+        <dd class="col-sm-8">
+            Phì đại thất trái có thể xảy ra
+        </dd>
+        }
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Thalac)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Thalac)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Exang)
+        </dt>
+        @if (Model.Exang == 0)
+        {
+            <dd class="col-sm-8">
+                Không
+            </dd>
+
+        }else{
+        <dd class="col-sm-8">
+            Có
+        </dd>
+        }
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.OldPeak)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.OldPeak)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Slope)
+        </dt>
+        @if (Model.Slope == 1)
+        {
+    <dd class="col-sm-8">
+        Tăng lên
+    </dd>
+        }else if(Model.Slope == 2){
+    <dd class="col-sm-8">
+        Bằng phẳng
+    </dd>
+
+        }else{
+    <dd class="col-sm-8">
+        Dốc xuống
+    </dd>
+        }
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Ca)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Ca)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Thal)
+        </dt>
+        @if (Model.Thal == 3)
+        {
+            <dd class="col-sm-8">
+                Bình thường
+            </dd>
+        }else if(Model.Thal == 6){
+        <dd class="col-sm-8">
+            Nặng
+        </dd>
+
+        }else{
+        <dd class="col-sm-8">
+            Nhẹ
+        </dd>
+        }
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Predict)
+        </dt>
+        @if(Model.Predict==false){
+
+
+<dd class="col-sm-8">
+                Không
+            </dd>
+            }
+            else
+            {
+    <dd class="col-sm-8">
+        Có
+    </dd>
+            }
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Probability)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Probability)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Cập nhật", "Edit", new { _id = Model._id, MaBN = Model.MaBN }) |
+    <a asp-action="GetAllPhieuKTTheoBN" asp-route-MaBN="@Model.MaBN">Quay lại danh sách phiếu kiểm tra</a>
+</div>

@@ -1,0 +1,67 @@
+﻿@model QuanLyBenhNhan_bigdata.Models.PhieuKT
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Xóa</h1>
+
+<h3>Bạn chắc chắn xóa phiếu kiểm tra này chứ?</h3>
+<div>
+    
+    <hr />
+    <dl class="row">
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaBN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaBN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaPhieu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaPhieu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Predict)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Predict)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Probability)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Probability)
+        </dd>
+
+    </dl>
+    
+    <form asp-action="DeletePost">
+        <input type="hidden" name="_id" value="@Model._id" />
+        <input type="hidden" name="MaBN" value="@ViewBag.MaBN" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-action="GetAllPhieuKTTheoBN" asp-route-MaBN="@ViewBag.MaBN">Quay lại danh sách phiếu kiểm tra</a>
+    </form>
+</div>
